@@ -4,7 +4,7 @@ import TopBar, { ITopBar } from '.';
 import { TitleWrapper, Link, CustomLink } from './style';
 
 const defaultProps: ITopBar = {
-  links: [{ title: 'Link 1', url: '#', order: 1 }]
+  links: [{ title: 'Link 1', url: '#', order: 1 }],
 };
 
 describe('<TopBar />', () => {
@@ -26,7 +26,7 @@ describe('<TopBar />', () => {
     it('should show the correct number of links', () => {
       const links = [
         { title: 'Link 1', url: '#', order: 1 },
-        { title: 'Link 2', url: '#', order: 2 }
+        { title: 'Link 2', url: '#', order: 2 },
       ];
       wrapper.setProps({ links });
       expect(wrapper.find(Link).length).toEqual(2);
@@ -35,7 +35,7 @@ describe('<TopBar />', () => {
     it('should show the correct number of custom links', () => {
       const links = [
         { title: 'Link 1', url: '#', customNavigation: () => {}, order: 1 },
-        { title: 'Link 2', url: '#', customNavigation: () => {}, order: 2 }
+        { title: 'Link 2', url: '#', customNavigation: () => {}, order: 2 },
       ];
       wrapper.setProps({ links });
       expect(wrapper.find(CustomLink).length).toEqual(2);
@@ -45,29 +45,14 @@ describe('<TopBar />', () => {
       const links = [
         { title: 'Link 3', url: '#', order: 3 },
         { title: 'Link 2', url: '#', order: 2 },
-        { title: 'Link 1', url: '#', order: 1 }
+        { title: 'Link 1', url: '#', order: 1 },
       ];
       wrapper.setProps({ links });
-      expect(
-        wrapper
-          .find(Link)
-          .at(0)
-          .text()
-      ).toEqual('Link 1');
+      expect(wrapper.find(Link).at(0).text()).toEqual('Link 1');
 
-      expect(
-        wrapper
-          .find(Link)
-          .at(1)
-          .text()
-      ).toEqual('Link 2');
+      expect(wrapper.find(Link).at(1).text()).toEqual('Link 2');
 
-      expect(
-        wrapper
-          .find(Link)
-          .at(2)
-          .text()
-      ).toEqual('Link 3');
+      expect(wrapper.find(Link).at(2).text()).toEqual('Link 3');
     });
   });
 
