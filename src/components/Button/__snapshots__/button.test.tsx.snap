@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render 1`] = `
+<styled.button
+  data-test-id="Button-button"
+  iconOnly={false}
+  size="medium"
+  theme={
+    Object {
+      "buttonWrapper": Object {
+        "clear": Object {
+          "text": "#9EA0A5",
+          "textHover": "#6B6C6F",
+        },
+        "primary": Object {
+          "background": "#1665D8",
+        },
+        "success": Object {
+          "background": "#38B249",
+        },
+        "warning": Object {
+          "background": "#E6492D",
+        },
+      },
+    }
+  }
+>
+  <styled.span
+    data-test-id="Button-content"
+  >
+    Click Me!
+  </styled.span>
+</styled.button>
+`;

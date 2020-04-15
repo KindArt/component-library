@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toggle /> should render 1`] = `
+<Checkbox
+  name="toggle-test"
+  toggle={true}
+/>
+`;

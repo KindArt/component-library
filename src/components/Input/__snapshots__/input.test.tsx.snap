@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render 1`] = `
+<styled.div
+  data-test-id="Input-formGroup"
+>
+  <styled.div>
+    <styled.input
+      data-test-id="Input-input"
+      theme={
+        Object {
+          "input": Object {
+            "border": "1px solid #EAEDF3",
+            "errorBorderColor": "#E6492D",
+          },
+        }
+      }
+      type="text"
+    />
+  </styled.div>
+</styled.div>
+`;

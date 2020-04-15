@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioButton /> should render 1`] = `
+<Checkbox
+  name="radioButton-test"
+  radio={true}
+  type="radio"
+/>
+`;

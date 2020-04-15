@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Label /> should render 1`] = `
+<styled.span
+  theme={
+    Object {
+      "label": Object {
+        "colour": "#9EA0A5",
+      },
+    }
+  }
+>
+  This is a label
+</styled.span>
+`;

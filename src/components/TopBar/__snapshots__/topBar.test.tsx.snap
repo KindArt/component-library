@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopBar /> should render 1`] = `
+<styled.div>
+  <Button
+    classOverrides={
+      Object {
+        "buttonWrapper": "
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    border-radius: 0;
+    border: none !important;
+    border-right: 1px solid #eaedf3 !important;
+    width: 56px;
+    height: 56px;
+    left: 0;
+    top: 0;
+    font-weight: 600;
+    box-shadow: none;
+  }
+",
+      }
+    }
+    onClick={[Function]}
+    transparent={true}
+  >
+    <BurgerMenu
+      isOpen={false}
+    />
+  </Button>
+  <styled.div>
+    <styled.div />
+    <styled.div>
+      <styled.a
+        href="#"
+        key="0"
+      >
+        Link 1
+      </styled.a>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BurgerMenu /> should render 1`] = `
+<styled.div>
+  <styled.svg
+    fill="currentColor"
+    height="2px"
+    isOpen={false}
+    version="1.1"
+    viewBox="0 0 20 2"
+    width="20px"
+  >
+    <LongLine />
+  </styled.svg>
+  <styled.svg
+    fill="currentColor"
+    height="2px"
+    isOpen={false}
+    version="1.1"
+    viewBox="0 0 20 2"
+    width="20px"
+  >
+    <LongLine />
+  </styled.svg>
+  <styled.svg
+    fill="currentColor"
+    height="2px"
+    isOpen={false}
+    version="1.1"
+    viewBox="0 0 20 2"
+    width="20px"
+  >
+    <LongLine />
+  </styled.svg>
+</styled.div>
+`;

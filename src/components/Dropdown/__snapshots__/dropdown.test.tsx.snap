@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown /> should render 1`] = `
+<OutsideClickHandler
+  Component="div"
+  onOutsideClick={null}
+  onOutsideScroll={false}
+  onWindowResize={true}
+>
+  <Button
+    classOverrides={
+      Object {
+        "buttonWrapper": "
+  width: 100%;
+  text-align: left; // important for other selectors - :hover etc.
+  position: relative;
+  background: #ffffff;
+  border: 1px solid ,#D8DCE6,;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+",
+      }
+    }
+    disabled={false}
+    onClick={[Function]}
+  >
+    <styled.div>
+      <styled.div
+        placeholderEmpty={true}
+      />
+      <styled.div />
+    </styled.div>
+  </Button>
+</OutsideClickHandler>
+`;
