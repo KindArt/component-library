@@ -2,7 +2,7 @@
   "name": "@kindart/component-library",
   "version": "1.0.7",
   "description": "Reusable component library for Kind Art.",
-  "main": "index.tsx",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
     "test": "jest"
