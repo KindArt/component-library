@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes, ReactNode, useState } from 'react';
 import { Button, Label } from '../';
-import OptionList from './OptionList';
+import OptionList from './OptionList/OptionList';
 import OutsideClickHandler from '../../hocs/OutsideClickHandler';
 
 import {
@@ -10,13 +10,13 @@ import {
   ValueWrapper,
   PlaceholderAndOther,
   PlusValue,
-  ErrorMessage
+  ErrorMessage,
 } from './style';
 
 export type DropdownOptionValueType = string | number;
 
 export type DropdownOptionType = {
-  label?: ReactNode;
+  label: ReactNode;
   value: DropdownOptionValueType;
 };
 
@@ -44,12 +44,12 @@ const Dropdown: FC<IDropdownProps> = ({
   optionProps,
   value,
   errorMessage,
-  callbackOnChange
+  callbackOnChange,
 }) => {
   const defaultValue = Array.isArray(defaultOption) ? defaultOption : [defaultOption];
 
   const selectedOptions: Array<DropdownOptionType> = [];
-  options.forEach(item => {
+  options.forEach((item) => {
     if (defaultValue.indexOf(item.value) !== -1) {
       selectedOptions.push(item);
     }
@@ -64,7 +64,7 @@ const Dropdown: FC<IDropdownProps> = ({
     const firstRender = selected[0];
     if (typeof firstRender !== 'undefined') {
       if (!firstRender.label) {
-        const full = options.find(item => firstRender.value === item.value);
+        const full = options.find((item) => firstRender.value === item.value);
         if (full) {
           firstRender.label = full.label;
         }
@@ -115,7 +115,7 @@ const Dropdown: FC<IDropdownProps> = ({
       setFocused(false);
     } else {
       const selectedClone = [...selected];
-      const index = selectedClone.map(item => item.value).indexOf(option.value);
+      const index = selectedClone.map((item) => item.value).indexOf(option.value);
       if (index !== -1) {
         selectedClone.splice(index, 1);
       } else {
@@ -130,7 +130,7 @@ const Dropdown: FC<IDropdownProps> = ({
       {label && <Label content={label} />}
       <Button
         classOverrides={{
-          buttonWrapper: `${ValueRendered}`
+          buttonWrapper: `${ValueRendered}`,
         }}
         disabled={disabled || options.length < 1}
         onClick={onToggleFocus}

@@ -4,6 +4,8 @@
   "description": "Reusable component library for Kind Art.",
   "main": "lib/index.js",
   "scripts": {
+    "start": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "build": "tsc -p .",
     "test": "jest"
   },
@@ -21,27 +23,40 @@
     "url": "https://github.com/KindArt/component-library/issues"
   },
   "homepage": "https://github.com/KindArt/component-library#readme",
+  "browserslist": [
+    ">1%",
+    "last 1 version",
+    "Firefox ESR",
+    "not dead"
+  ],
   "peerDependencies": {
     "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "react-dom": ">=16.0.0",
+    "styled-components": ">=5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/styled-components": "^5.1.0",
     "babel-jest": "^25.3.0",
+    "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
     "jest": "^25.3.0",
     "react": "^16.13.1",
+    "react-docgen-typescript": "^1.16.3",
     "react-dom": "^16.13.1",
+    "react-styleguidist": "^11.0.5",
     "styled-components": "^5.1.0",
     "ts-jest": "^25.3.1",
-    "typescript": "^3.8.3"
+    "ts-loader": "^7.0.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1"
   }
 }

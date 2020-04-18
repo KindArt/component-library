@@ -2,9 +2,13 @@ import styled, { css } from 'styled-components';
 import { Colours, CssVariables } from '../../constants/styles';
 import { IInputProps } from '.';
 
-export const FormGroupWrapper = styled.div``;
+export const FormGroupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const InputWrapper = styled.div`
+  display: flex;
   position: relative;
 `;
 
@@ -22,40 +26,39 @@ export const IconWrapper = styled.span<IIconWrapper>`
     iconPosition === 'left' &&
     css`
       left: 12px;
-      &+${InputField} {
+      & + ${InputField} {
         padding-left: 40px;
       }
-  `}
+    `}
 
   ${({ iconPosition }) =>
     iconPosition === 'right' &&
     css`
-      left: auto;
-      right: -36px;
-      &+${InputField} {
+      // left: auto;
+      right: 12px;
+      & + ${InputField} {
         padding-right: 40px;
       }
-  `}
+    `}
 `;
 
 IconWrapper.defaultProps = {
   theme: {
     input: {
-      iconWrapperColour: Colours.BORDER_COLOUR_DARKER
-    }
-  }
-}
+      iconWrapperColour: Colours.BORDER_COLOUR_DARKER,
+    },
+  },
+};
 
 export const InputField = styled.input<IInputProps>`
   border: ${({ theme }) => theme.input.border};
   border-radius: 4px;
-  display: block;
-  width: 100%;
+  flex: 1;
   background: white;
   padding: 10px 15px;
-  transition: .2s all;
+  transition: 0.2s all;
   outline: none;
-  &+* {
+  & + * {
     margin-top: 10px;
   }
   &:disabled {
@@ -83,18 +86,18 @@ export const InputField = styled.input<IInputProps>`
   ${({ errorMessage, theme }) =>
     errorMessage &&
     css`
-      border-color: ${theme.input.errorBorderColor}
-  `}
+      border-color: ${theme.input.errorBorderColor};
+    `}
 `;
 
 InputField.defaultProps = {
   theme: {
     input: {
       border: `${CssVariables.BORDER_DEFAULT}`,
-      errorBorderColor: `${Colours.ERROR}`
-    }
-  }
-}
+      errorBorderColor: `${Colours.ERROR}`,
+    },
+  },
+};
 
 export const ErrorMessage = styled.p`
   color: ${({ theme }) => theme.errorMessage.color};
@@ -105,7 +108,7 @@ export const ErrorMessage = styled.p`
 ErrorMessage.defaultProps = {
   theme: {
     errorMessage: {
-      color: `${Colours.ERROR}`
-    }
-  }
-}
+      color: `${Colours.ERROR}`,
+    },
+  },
+};

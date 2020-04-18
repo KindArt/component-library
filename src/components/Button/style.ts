@@ -254,7 +254,6 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
       }
     `}
 
-  // Button without background and without hover or effect
   ${({ clear }) =>
     clear &&
     css`
@@ -291,20 +290,20 @@ ButtonWrapper.defaultProps = {
   theme: {
     buttonWrapper: {
       primary: {
-        background: `${Colours.PRIMARY}`
+        background: `${Colours.PRIMARY}`,
       },
       warning: {
-        background: `${Colours.WARNING}`
+        background: `${Colours.WARNING}`,
       },
       success: {
-        background: `${Colours.SUCCESS}`
+        background: `${Colours.SUCCESS}`,
       },
       clear: {
         text: `${Colours.TEXT_SECONDARY}`,
-        textHover: `${Colours.TEXT_BASE}`
-      }
-    }
-  }
+        textHover: `${Colours.TEXT_BASE}`,
+      },
+    },
+  },
 };
 
 export const ContentWrapper = styled.span`

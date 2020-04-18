@@ -95,8 +95,9 @@ export const Wrapper = styled.label<IWrapper>`
 
         ${CheckboxStyle}:checked+${Label} {
           &:before {
-            background: #34aa44;
             border: 1px solid #2f9e3e;
+            background-color: ${Colours[colour]};
+            border-color: ${Colours[colour]};
           }
           &:after {
             transform: translateX(18px);
@@ -142,8 +143,8 @@ export const Wrapper = styled.label<IWrapper>`
 
         ${CheckboxStyle}:checked+${Label} {
           &:before {
-            background-image: linear-gradient(0deg, #34aa44 0%, #38b249 100%);
-            border: 1px solid #2d9c3c;
+            background-image: linear-gradient(0deg, ${Colours[colour]} 0%, ${Colours[colour]} 100%);
+            border: 1px solid ${Colours[colour]};
             box-shadow: 0 1px 1px 0 rgba(19, 31, 21, 0.1), inset 0 2px 0 0 rgba(255, 255, 255, 0.06);
           }
           &:after {

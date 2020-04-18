@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Dropdown, { IDropdownProps } from '.';
 import { Label, Button } from '../';
-import OptionList from './OptionList';
+import OptionList from './OptionList/OptionList';
 import { ErrorMessage } from './style';
 
 const defaultProps: IDropdownProps = {
-  options: [{ label: 'A label', value: '1' }]
+  options: [{ label: 'A label', value: '1' }],
 };
 
 describe('<Dropdown />', () => {

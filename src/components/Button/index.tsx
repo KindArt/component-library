@@ -4,13 +4,13 @@ import { ButtonWrapper, ContentWrapper, IconWrapper } from './style';
 export enum ButtonSize {
   Small = 'small',
   Medium = 'medium',
-  Large = 'large'
+  Large = 'large',
 }
 
 enum ElementIdentifiers {
   button = 'button',
   icon = 'icon',
-  content = 'content'
+  content = 'content',
 }
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -18,7 +18,9 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   secondary?: boolean;
   warning?: boolean;
   success?: boolean;
+  /** Transparent background */
   transparent?: boolean;
+  /** Without background and without hover or effect */
   clear?: boolean;
   disabled?: boolean;
   size?: ButtonSize;
@@ -54,7 +56,7 @@ const Button: FC<IButtonProps> = ({
   const tid = {
     button: (testIds && testIds.button) || ElementIdentifiers.button,
     icon: (testIds && testIds.icon) || ElementIdentifiers.icon,
-    content: (testIds && testIds.content) || ElementIdentifiers.content
+    content: (testIds && testIds.content) || ElementIdentifiers.content,
   };
   const iconOnly = !!(!children && icon);
 
