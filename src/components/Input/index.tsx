@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, ReactNode, forwardRef } from 'react';
+import React, { HTMLProps, ReactNode, forwardRef } from 'react';
 import { FormGroupWrapper, ErrorMessage, IconWrapper, InputWrapper, InputField } from './style';
 import Label from '../Label';
 
@@ -10,7 +10,7 @@ enum ElementIdentifiers {
   errorMessage = 'errorMessage',
 }
 
-export interface IInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends HTMLProps<HTMLInputElement> {
   label?: string;
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
@@ -23,7 +23,6 @@ export interface IInputProps extends HTMLAttributes<HTMLInputElement> {
     input?: string;
     errorMessage?: string;
   };
-  ref: any;
 }
 
 const componentName = 'Input';
@@ -53,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
             type="text"
             errorMessage={errorMessage}
             value={value}
-            {...props}
+            {...(props as any)}
           ></InputField>
         </InputWrapper>
         {errorMessage && <ErrorMessage data-test-id={`${tidPrefix}-${tid.errorMessage}`}>{errorMessage}</ErrorMessage>}

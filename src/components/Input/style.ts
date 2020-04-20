@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { HTMLProps } from 'react';
 import { Colours, CssVariables } from '../../constants/styles';
 import { IInputProps } from '.';
 
