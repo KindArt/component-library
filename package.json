@@ -6,7 +6,7 @@
   "scripts": {
     "start": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "build": "tsc -p .",
+    "prepublish": "tsc -p .",
     "test": "jest"
   },
   "repository": {
