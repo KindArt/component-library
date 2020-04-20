@@ -23,9 +23,7 @@ export interface IInputProps extends HTMLAttributes<HTMLInputElement> {
     input?: string;
     errorMessage?: string;
   };
-  ref:
-    | (((instance: HTMLInputElement | null) => void) & HTMLInputElement)
-    | (React.RefObject<HTMLInputElement> & HTMLInputElement);
+  ref: any;
 }
 
 const componentName = 'Input';
