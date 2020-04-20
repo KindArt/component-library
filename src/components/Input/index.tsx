@@ -23,6 +23,9 @@ export interface IInputProps extends HTMLAttributes<HTMLInputElement> {
     input?: string;
     errorMessage?: string;
   };
+  ref:
+    | (((instance: HTMLInputElement | null) => void) & HTMLInputElement)
+    | (React.RefObject<HTMLInputElement> & HTMLInputElement);
 }
 
 const componentName = 'Input';
@@ -47,7 +50,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
             </IconWrapper>
           )}
           <InputField
-            ref={ref as any}
+            ref={ref}
             data-test-id={`${tidPrefix}-${tid.input}`}
             type="text"
             errorMessage={errorMessage}
