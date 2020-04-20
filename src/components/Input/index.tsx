@@ -27,7 +27,7 @@ export interface IInputProps extends HTMLAttributes<HTMLInputElement> {
 
 const componentName = 'Input';
 
-const Input: FC<IInputProps> = forwardRef(
+const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ id, label, icon, iconPosition = 'left', errorMessage, value, testIds, ...props }, ref) => {
     const tidPrefix = id || componentName;
     const tid = {
