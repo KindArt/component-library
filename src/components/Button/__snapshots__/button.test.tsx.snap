@@ -3,7 +3,7 @@
 exports[`<Button /> should render 1`] = `
 <styled.button
   buttonSize="medium"
-  data-testId="Button-button"
+  data-testid="Button-button"
   iconOnly={false}
   theme={
     Object {
@@ -27,7 +27,7 @@ exports[`<Button /> should render 1`] = `
   type="button"
 >
   <styled.span
-    data-testId="Button-content"
+    data-testid="Button-content"
   >
     Click Me!
   </styled.span>

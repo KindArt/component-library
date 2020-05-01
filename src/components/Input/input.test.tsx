@@ -24,21 +24,21 @@ describe('<Input />', () => {
 
     it('should display an icon if one is passed', () => {
       wrapper.setProps({ icon: <div></div> });
-      const actual = wrapper.find('[data-testId="Input-icon"]').length;
+      const actual = wrapper.find('[data-testid="Input-icon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should display an error message if one is passed', () => {
       wrapper.setProps({ errorMessage: 'Error' });
-      const actual = wrapper.find('[data-testId="Input-errorMessage"]').length;
+      const actual = wrapper.find('[data-testid="Input-errorMessage"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should default icon placement to the left', () => {
       wrapper.setProps({ icon: <div></div> });
-      const icon = wrapper.find('[data-testId="Input-icon"]');
+      const icon = wrapper.find('[data-testid="Input-icon"]');
       const actual = icon.prop('iconPosition');
       const expected = 'left';
       expect(actual).toEqual(expected);
@@ -48,7 +48,7 @@ describe('<Input />', () => {
   describe('Test Ids', () => {
     it('should set a custom test id for wrapper', () => {
       wrapper.setProps({ testIds: { wrapper: 'customWrapper' } });
-      const actual = wrapper.find('[data-testId="Input-customWrapper"]').length;
+      const actual = wrapper.find('[data-testid="Input-customWrapper"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -58,14 +58,14 @@ describe('<Input />', () => {
         testIds: { icon: 'customIcon' },
         icon: <div></div>,
       });
-      const actual = wrapper.find('[data-testId="Input-customIcon"]').length;
+      const actual = wrapper.find('[data-testid="Input-customIcon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should set a custom test id for input', () => {
       wrapper.setProps({ testIds: { input: 'customInput' } });
-      const actual = wrapper.find('[data-testId="Input-customInput"]').length;
+      const actual = wrapper.find('[data-testid="Input-customInput"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -75,7 +75,7 @@ describe('<Input />', () => {
         testIds: { errorMessage: 'customError' },
         errorMessage: 'Error',
       });
-      const actual = wrapper.find('[data-testId="Input-customError"]').length;
+      const actual = wrapper.find('[data-testid="Input-customError"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });

@@ -47,13 +47,13 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       errorMessage: (testIds && testIds.errorMessage) || ElementIdentifiers.errorMessage,
     };
     return (
-      <Wrapper className={classOverrides && classOverrides.wrapper} data-testId={`${tidPrefix}-${tid.wrapper}`}>
+      <Wrapper className={classOverrides && classOverrides.wrapper} data-testid={`${tidPrefix}-${tid.wrapper}`}>
         {label && <Label classOverrides={{ wrapper: classOverrides && classOverrides.label }} content={label} />}
         <InputWrapper>
           {icon && (
             <IconWrapper
               className={classOverrides && classOverrides.icon}
-              data-testId={`${tidPrefix}-${tid.icon}`}
+              data-testid={`${tidPrefix}-${tid.icon}`}
               iconPosition={iconPosition}
             >
               {icon}
@@ -62,7 +62,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
           <InputField
             ref={ref}
             className={classOverrides && classOverrides.input}
-            data-testId={`${tidPrefix}-${tid.input}`}
+            data-testid={`${tidPrefix}-${tid.input}`}
             type={type}
             errorMessage={errorMessage}
             value={value}
@@ -72,7 +72,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
         {errorMessage && (
           <ErrorMessage
             className={classOverrides && classOverrides.errorMessage}
-            data-testId={`${tidPrefix}-${tid.errorMessage}`}
+            data-testid={`${tidPrefix}-${tid.errorMessage}`}
           >
             {errorMessage}
           </ErrorMessage>

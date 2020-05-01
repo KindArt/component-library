@@ -21,7 +21,7 @@ const Label: FC<ILabel> = ({ id, content, testIds, classOverrides }) => {
   };
 
   return (
-    <LabelWrapper className={classOverrides && classOverrides.wrapper} data-testId={`${tidPrefix}-${tid.wrapper}`}>
+    <LabelWrapper className={classOverrides && classOverrides.wrapper} data-testid={`${tidPrefix}-${tid.wrapper}`}>
       {content}
     </LabelWrapper>
   );

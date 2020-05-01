@@ -2,11 +2,11 @@
 
 exports[`<Input /> should render 1`] = `
 <styled.div
-  data-testId="Input-wrapper"
+  data-testid="Input-wrapper"
 >
   <styled.div>
     <styled.input
-      data-testId="Input-input"
+      data-testid="Input-input"
       theme={
         Object {
           "input": Object {

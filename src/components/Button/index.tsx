@@ -64,7 +64,7 @@ const Button: FC<IButtonProps> = ({
   return (
     <ButtonWrapper
       className={classOverrides && classOverrides.buttonWrapper}
-      data-testId={`${tidPrefix}-${tid.button}`}
+      data-testid={`${tidPrefix}-${tid.button}`}
       buttonSize={buttonSize}
       icon={icon}
       iconRight={iconRight}
@@ -75,7 +75,7 @@ const Button: FC<IButtonProps> = ({
       {icon && (
         <IconWrapper
           className={classOverrides && classOverrides.icon}
-          data-testId={`${tidPrefix}-${tid.icon}`}
+          data-testid={`${tidPrefix}-${tid.icon}`}
           icon={icon}
           iconRight={iconRight}
           iconOnly={iconOnly}
@@ -85,7 +85,7 @@ const Button: FC<IButtonProps> = ({
       )}
       <ContentWrapper
         className={classOverrides && classOverrides.contentWrapper}
-        data-testId={`${tidPrefix}-${tid.content}`}
+        data-testid={`${tidPrefix}-${tid.content}`}
       >
         {children}
       </ContentWrapper>

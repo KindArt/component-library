@@ -59,26 +59,26 @@ const Checkbox: FC<ICheckboxProps> = ({
   return (
     <Wrapper
       className={classOverrides && classOverrides.wrapper}
-      data-testId={`${tidPrefix}-${tid.wrapper}`}
+      data-testid={`${tidPrefix}-${tid.wrapper}`}
       toggle={toggle}
       radio={radio}
       colour={colour}
     >
       <CheckboxStyle
         className={classOverrides && classOverrides.checkbox}
-        data-testId={`${tidPrefix}-${tid.checkbox}`}
+        data-testid={`${tidPrefix}-${tid.checkbox}`}
         name={name}
         type={type}
         {...(props as any)}
       ></CheckboxStyle>
       <Label
         className={classOverrides && classOverrides.labelWrapper}
-        data-testId={`${tidPrefix}-${tid.labelWrapper}`}
+        data-testid={`${tidPrefix}-${tid.labelWrapper}`}
         colour={colour}
       >
         {!toggle && !radio && <Check />}
         {label && (
-          <span className={classOverrides && classOverrides.label} data-testId={`${tidPrefix}-${tid.label}`}>
+          <span className={classOverrides && classOverrides.label} data-testid={`${tidPrefix}-${tid.label}`}>
             {label}
           </span>
         )}
@@ -86,7 +86,7 @@ const Checkbox: FC<ICheckboxProps> = ({
       {description && (
         <Description
           className={classOverrides && classOverrides.description}
-          data-testId={`${tidPrefix}-${tid.description}`}
+          data-testid={`${tidPrefix}-${tid.description}`}
         >
           {description}
         </Description>

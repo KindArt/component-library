@@ -15,13 +15,13 @@ describe('<Button />', () => {
   describe('Visuals', () => {
     it('should display an icon when one is passed', () => {
       wrapper.setProps({ icon: <div></div> });
-      const actual = wrapper.find('[data-testId="Button-icon"]').length;
+      const actual = wrapper.find('[data-testid="Button-icon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should display text passed to the button', () => {
-      const actual = wrapper.find('[data-testId="Button-content"]').text();
+      const actual = wrapper.find('[data-testid="Button-content"]').text();
       const expected = 'Click Me!';
       expect(actual).toEqual(expected);
     });
@@ -53,7 +53,7 @@ describe('<Button />', () => {
   describe('Test Ids', () => {
     it('should set a custom test id for button', () => {
       wrapper.setProps({ testIds: { button: 'customButton' } });
-      const actual = wrapper.find('[data-testId="Button-customButton"]').length;
+      const actual = wrapper.find('[data-testid="Button-customButton"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -63,14 +63,14 @@ describe('<Button />', () => {
         testIds: { icon: 'customIcon' },
         icon: <div></div>,
       });
-      const actual = wrapper.find('[data-testId="Button-customIcon"]').length;
+      const actual = wrapper.find('[data-testid="Button-customIcon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should set a custom test id for content', () => {
       wrapper.setProps({ testIds: { content: 'customContent' } });
-      const actual = wrapper.find('[data-testId="Button-customContent"]').length;
+      const actual = wrapper.find('[data-testid="Button-customContent"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -81,7 +81,7 @@ describe('<Button />', () => {
       wrapper.setProps({
         classOverrides: { buttonWrapper: 'override' },
       });
-      expect(wrapper.find('[data-testId="Button-button"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testid="Button-button"]').hasClass('override')).toEqual(true);
     });
 
     it('should have the correct classNames for Icon when an overide is passed', () => {
@@ -89,14 +89,14 @@ describe('<Button />', () => {
         classOverrides: { icon: 'override' },
         icon: <div></div>,
       });
-      expect(wrapper.find('[data-testId="Button-icon"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testid="Button-icon"]').hasClass('override')).toEqual(true);
     });
 
     it('should have the correct classNames for ContentWrapper when an overide is passed', () => {
       wrapper.setProps({
         classOverrides: { contentWrapper: 'override' },
       });
-      expect(wrapper.find('[data-testId="Button-content"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testid="Button-content"]').hasClass('override')).toEqual(true);
     });
   });
 
