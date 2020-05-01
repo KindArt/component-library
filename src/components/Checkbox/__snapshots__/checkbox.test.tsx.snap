@@ -3,13 +3,16 @@
 exports[`<Checkbox /> should render 1`] = `
 <styled.label
   colour="GREEN"
+  data-testId="Checkbox-wrapper"
 >
   <styled.input
+    data-testId="Checkbox-checkbox"
     name="test"
     type="checkbox"
   />
   <styled.div
     colour="GREEN"
+    data-testId="Checkbox-label"
   >
     <Check />
   </styled.div>

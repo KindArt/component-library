@@ -28,7 +28,7 @@ export interface IInputProps extends HTMLProps<HTMLInputElement> {
 const componentName = 'Input';
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ id, label, icon, iconPosition = 'left', errorMessage, value, testIds, ...props }, ref) => {
+  ({ id, label, icon, iconPosition = 'left', errorMessage, value, testIds, type = 'text', ...props }, ref) => {
     const tidPrefix = id || componentName;
     const tid = {
       formGroup: (testIds && testIds.formGroup) || ElementIdentifiers.formGroup,
@@ -38,24 +38,24 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
       errorMessage: (testIds && testIds.errorMessage) || ElementIdentifiers.errorMessage,
     };
     return (
-      <FormGroupWrapper data-test-id={`${tidPrefix}-${tid.formGroup}`}>
-        {label && <Label data-test-id={`${tidPrefix}-${tid.label}`} content={label} />}
+      <FormGroupWrapper data-testId={`${tidPrefix}-${tid.formGroup}`}>
+        {label && <Label data-testId={`${tidPrefix}-${tid.label}`} content={label} />}
         <InputWrapper>
           {icon && (
-            <IconWrapper data-test-id={`${tidPrefix}-${tid.icon}`} iconPosition={iconPosition}>
+            <IconWrapper data-testId={`${tidPrefix}-${tid.icon}`} iconPosition={iconPosition}>
               {icon}
             </IconWrapper>
           )}
           <InputField
             ref={ref}
-            data-test-id={`${tidPrefix}-${tid.input}`}
-            type="text"
+            data-testId={`${tidPrefix}-${tid.input}`}
+            type={type}
             errorMessage={errorMessage}
             value={value}
             {...(props as any)}
           ></InputField>
         </InputWrapper>
-        {errorMessage && <ErrorMessage data-test-id={`${tidPrefix}-${tid.errorMessage}`}>{errorMessage}</ErrorMessage>}
+        {errorMessage && <ErrorMessage data-testId={`${tidPrefix}-${tid.errorMessage}`}>{errorMessage}</ErrorMessage>}
       </FormGroupWrapper>
     );
   }

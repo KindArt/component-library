@@ -7,6 +7,12 @@ export const Description = styled.p`
   margin-top: 2px;
   margin-left: 26px;
   color: ${Colours.TEXT_SECONDARY};
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 interface ILabel {
@@ -23,6 +29,12 @@ export const Label = styled.div<ILabel>`
   &:hover {
     color: ${Colours.TEXT_MAIN};
   }
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 export const CheckboxStyle = styled.input`
@@ -46,6 +58,12 @@ export const CheckboxStyle = styled.input`
       ${Label} {
         cursor: not-allowed;
       }
+    `}
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
     `}
 `;
 

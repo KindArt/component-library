@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import { ButtonWrapper, ContentWrapper, IconWrapper } from './style';
 
 export enum ButtonSize {
@@ -13,7 +13,7 @@ enum ElementIdentifiers {
   content = 'content',
 }
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends HTMLProps<HTMLButtonElement> {
   primary?: boolean;
   secondary?: boolean;
   warning?: boolean;
@@ -23,7 +23,7 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /** Without background and without hover or effect */
   clear?: boolean;
   disabled?: boolean;
-  size?: ButtonSize;
+  buttonSize?: ButtonSize;
   icon?: React.ReactNode;
   iconRight?: boolean;
   fullWidth?: boolean;
@@ -46,10 +46,11 @@ const Button: FC<IButtonProps> = ({
   id,
   children,
   testIds,
-  size = ButtonSize.Medium,
+  buttonSize = ButtonSize.Medium,
   icon,
   iconRight,
   classOverrides,
+  type = 'button',
   ...props
 }) => {
   const tidPrefix = id || componentName;
@@ -63,17 +64,18 @@ const Button: FC<IButtonProps> = ({
   return (
     <ButtonWrapper
       className={classOverrides && classOverrides.buttonWrapper}
-      data-test-id={`${tidPrefix}-${tid.button}`}
-      size={size}
+      data-testId={`${tidPrefix}-${tid.button}`}
+      buttonSize={buttonSize}
       icon={icon}
       iconRight={iconRight}
       iconOnly={iconOnly}
-      {...props}
+      type={type}
+      {...(props as any)}
     >
       {icon && (
         <IconWrapper
           className={classOverrides && classOverrides.icon}
-          data-test-id={`${tidPrefix}-${tid.icon}`}
+          data-testId={`${tidPrefix}-${tid.icon}`}
           icon={icon}
           iconRight={iconRight}
           iconOnly={iconOnly}
@@ -83,7 +85,7 @@ const Button: FC<IButtonProps> = ({
       )}
       <ContentWrapper
         className={classOverrides && classOverrides.contentWrapper}
-        data-test-id={`${tidPrefix}-${tid.content}`}
+        data-testId={`${tidPrefix}-${tid.content}`}
       >
         {children}
       </ContentWrapper>

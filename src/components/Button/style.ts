@@ -96,16 +96,16 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
     transition: .1s all;
   }
 
-  ${({ size }) =>
-    size === ButtonSize.Small &&
+  ${({ buttonSize }) =>
+    buttonSize === ButtonSize.Small &&
     css`
       height: 28px;
       padding: 0 15px;
       font-size: 0.75rem;
     `}
 
-  ${({ size }) =>
-    size === ButtonSize.Large &&
+  ${({ buttonSize }) =>
+    buttonSize === ButtonSize.Large &&
     css`
       height: 48px;
       padding: 0 40px;

@@ -2,9 +2,9 @@
 
 exports[`<Button /> should render 1`] = `
 <styled.button
-  data-test-id="Button-button"
+  buttonSize="medium"
+  data-testId="Button-button"
   iconOnly={false}
-  size="medium"
   theme={
     Object {
       "buttonWrapper": Object {
@@ -24,9 +24,10 @@ exports[`<Button /> should render 1`] = `
       },
     }
   }
+  type="button"
 >
   <styled.span
-    data-test-id="Button-content"
+    data-testId="Button-content"
   >
     Click Me!
   </styled.span>

@@ -15,13 +15,13 @@ describe('<Button />', () => {
   describe('Visuals', () => {
     it('should display an icon when one is passed', () => {
       wrapper.setProps({ icon: <div></div> });
-      const actual = wrapper.find('[data-test-id="Button-icon"]').length;
+      const actual = wrapper.find('[data-testId="Button-icon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should display text passed to the button', () => {
-      const actual = wrapper.find('[data-test-id="Button-content"]').text();
+      const actual = wrapper.find('[data-testId="Button-content"]').text();
       const expected = 'Click Me!';
       expect(actual).toEqual(expected);
     });
@@ -42,7 +42,7 @@ describe('<Button />', () => {
       ['disabled', true],
       ['iconRight', true],
       ['fullWidth', true],
-      ['noBorder', true]
+      ['noBorder', true],
     ])('should pass true to the %s prop', (currentProp, expected) => {
       wrapper.setProps({ [currentProp]: expected });
       const actual = wrapper.prop(currentProp);
@@ -53,7 +53,7 @@ describe('<Button />', () => {
   describe('Test Ids', () => {
     it('should set a custom test id for button', () => {
       wrapper.setProps({ testIds: { button: 'customButton' } });
-      const actual = wrapper.find('[data-test-id="Button-customButton"]').length;
+      const actual = wrapper.find('[data-testId="Button-customButton"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -61,16 +61,16 @@ describe('<Button />', () => {
     it('should set a custom test id for icon', () => {
       wrapper.setProps({
         testIds: { icon: 'customIcon' },
-        icon: <div></div>
+        icon: <div></div>,
       });
-      const actual = wrapper.find('[data-test-id="Button-customIcon"]').length;
+      const actual = wrapper.find('[data-testId="Button-customIcon"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
 
     it('should set a custom test id for content', () => {
       wrapper.setProps({ testIds: { content: 'customContent' } });
-      const actual = wrapper.find('[data-test-id="Button-customContent"]').length;
+      const actual = wrapper.find('[data-testId="Button-customContent"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -79,30 +79,30 @@ describe('<Button />', () => {
   describe('Class Overrides', () => {
     it('should have the correct classNames for ButtonWrapper when an overide is passed', () => {
       wrapper.setProps({
-        classOverrides: { buttonWrapper: 'override' }
+        classOverrides: { buttonWrapper: 'override' },
       });
-      expect(wrapper.find('[data-test-id="Button-button"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testId="Button-button"]').hasClass('override')).toEqual(true);
     });
 
     it('should have the correct classNames for Icon when an overide is passed', () => {
       wrapper.setProps({
         classOverrides: { icon: 'override' },
-        icon: <div></div>
+        icon: <div></div>,
       });
-      expect(wrapper.find('[data-test-id="Button-icon"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testId="Button-icon"]').hasClass('override')).toEqual(true);
     });
 
     it('should have the correct classNames for ContentWrapper when an overide is passed', () => {
       wrapper.setProps({
-        classOverrides: { contentWrapper: 'override' }
+        classOverrides: { contentWrapper: 'override' },
       });
-      expect(wrapper.find('[data-test-id="Button-content"]').hasClass('override')).toEqual(true);
+      expect(wrapper.find('[data-testId="Button-content"]').hasClass('override')).toEqual(true);
     });
   });
 
   describe('Sizes', () => {
     it('should use medium as the default size', () => {
-      const actual = wrapper.prop('size');
+      const actual = wrapper.prop('buttonSize');
       const expected = ButtonSize.Medium;
       expect(actual).toEqual(expected);
     });
@@ -110,10 +110,10 @@ describe('<Button />', () => {
     test.each([
       [ButtonSize.Small, 'small'],
       [ButtonSize.Medium, 'medium'],
-      [ButtonSize.Large, 'large']
+      [ButtonSize.Large, 'large'],
     ])('should render the %s button size', (currentSize, expected) => {
-      wrapper.setProps({ size: currentSize });
-      const actual = wrapper.prop('size');
+      wrapper.setProps({ buttonSize: currentSize });
+      const actual = wrapper.prop('buttonSize');
       expect(actual).toEqual(expected);
     });
   });
