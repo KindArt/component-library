@@ -3,10 +3,12 @@ import { Colours } from '../../constants/styles';
 
 // Dropdown Styles
 
-export const Wrapper = css`
-  position: relative;
-  font-size: 0.875rem;
-  display: inline-block;
+export const Wrapper = styled.div`
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 export const ValueRendered = css`
@@ -109,7 +111,7 @@ export const ErrorMessage = styled.p`
 ErrorMessage.defaultProps = {
   theme: {
     errorMessage: {
-      color: `${Colours.ERROR}`
-    }
-  }
+      color: `${Colours.ERROR}`,
+    },
+  },
 };

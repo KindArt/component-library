@@ -3,9 +3,15 @@ import { HTMLProps } from 'react';
 import { Colours, CssVariables } from '../../constants/styles';
 import { IInputProps } from '.';
 
-export const FormGroupWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 export const InputWrapper = styled.div`
@@ -40,6 +46,12 @@ export const IconWrapper = styled.span<IIconWrapper>`
       & + ${InputField} {
         padding-right: 40px;
       }
+    `}
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
     `}
 `;
 
@@ -89,6 +101,12 @@ export const InputField = styled.input<IInputProps>`
     css`
       border-color: ${theme.input.errorBorderColor};
     `}
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 InputField.defaultProps = {
@@ -104,6 +122,12 @@ export const ErrorMessage = styled.p`
   color: ${({ theme }) => theme.errorMessage.color};
   margin-top: 6px;
   line-height: 1.375rem;
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 ErrorMessage.defaultProps = {

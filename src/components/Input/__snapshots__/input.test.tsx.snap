@@ -2,7 +2,7 @@
 
 exports[`<Input /> should render 1`] = `
 <styled.div
-  data-testId="Input-formGroup"
+  data-testId="Input-wrapper"
 >
   <styled.div>
     <styled.input

@@ -1,9 +1,9 @@
 import React, { HTMLProps, ReactNode, forwardRef } from 'react';
-import { FormGroupWrapper, ErrorMessage, IconWrapper, InputWrapper, InputField } from './style';
+import { Wrapper, ErrorMessage, IconWrapper, InputWrapper, InputField } from './style';
 import Label from '../Label';
 
 enum ElementIdentifiers {
-  formGroup = 'formGroup',
+  wrapper = 'wrapper',
   label = 'label',
   icon = 'icon',
   input = 'input',
@@ -17,7 +17,14 @@ export interface IInputProps extends HTMLProps<HTMLInputElement> {
   errorMessage?: string;
   value?: string;
   testIds?: {
-    formGroup?: string;
+    wrapper?: string;
+    label?: string;
+    icon?: string;
+    input?: string;
+    errorMessage?: string;
+  };
+  classOverrides?: {
+    wrapper?: string;
     label?: string;
     icon?: string;
     input?: string;
@@ -27,27 +34,34 @@ export interface IInputProps extends HTMLProps<HTMLInputElement> {
 
 const componentName = 'Input';
 
-const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ id, label, icon, iconPosition = 'left', errorMessage, value, testIds, type = 'text', ...props }, ref) => {
+export const Input = forwardRef<HTMLInputElement, IInputProps>(
+  (
+    { id, label, icon, iconPosition = 'left', errorMessage, value, testIds, classOverrides, type = 'text', ...props },
+    ref
+  ) => {
     const tidPrefix = id || componentName;
     const tid = {
-      formGroup: (testIds && testIds.formGroup) || ElementIdentifiers.formGroup,
-      label: (testIds && testIds.label) || ElementIdentifiers.label,
+      wrapper: (testIds && testIds.wrapper) || ElementIdentifiers.wrapper,
       icon: (testIds && testIds.icon) || ElementIdentifiers.icon,
       input: (testIds && testIds.input) || ElementIdentifiers.input,
       errorMessage: (testIds && testIds.errorMessage) || ElementIdentifiers.errorMessage,
     };
     return (
-      <FormGroupWrapper data-testId={`${tidPrefix}-${tid.formGroup}`}>
-        {label && <Label data-testId={`${tidPrefix}-${tid.label}`} content={label} />}
+      <Wrapper className={classOverrides && classOverrides.wrapper} data-testId={`${tidPrefix}-${tid.wrapper}`}>
+        {label && <Label classOverrides={{ wrapper: classOverrides && classOverrides.label }} content={label} />}
         <InputWrapper>
           {icon && (
-            <IconWrapper data-testId={`${tidPrefix}-${tid.icon}`} iconPosition={iconPosition}>
+            <IconWrapper
+              className={classOverrides && classOverrides.icon}
+              data-testId={`${tidPrefix}-${tid.icon}`}
+              iconPosition={iconPosition}
+            >
               {icon}
             </IconWrapper>
           )}
           <InputField
             ref={ref}
+            className={classOverrides && classOverrides.input}
             data-testId={`${tidPrefix}-${tid.input}`}
             type={type}
             errorMessage={errorMessage}
@@ -55,8 +69,15 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
             {...(props as any)}
           ></InputField>
         </InputWrapper>
-        {errorMessage && <ErrorMessage data-testId={`${tidPrefix}-${tid.errorMessage}`}>{errorMessage}</ErrorMessage>}
-      </FormGroupWrapper>
+        {errorMessage && (
+          <ErrorMessage
+            className={classOverrides && classOverrides.errorMessage}
+            data-testId={`${tidPrefix}-${tid.errorMessage}`}
+          >
+            {errorMessage}
+          </ErrorMessage>
+        )}
+      </Wrapper>
     );
   }
 );

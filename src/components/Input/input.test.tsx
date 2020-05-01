@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Label from '../Label';
 import Input from '.';
 
 describe('<Input />', () => {
@@ -15,7 +16,7 @@ describe('<Input />', () => {
   describe('Visuals', () => {
     it('should display a label if one is passed', () => {
       wrapper.setProps({ label: 'Label' });
-      const label = wrapper.find('[data-testId="Input-label"]');
+      const label = wrapper.find(Label);
       const actual = label.prop('content');
       const expected = 'Label';
       expect(actual).toEqual(expected);
@@ -45,19 +46,9 @@ describe('<Input />', () => {
   });
 
   describe('Test Ids', () => {
-    it('should set a custom test id for form group', () => {
-      wrapper.setProps({ testIds: { formGroup: 'customFormGroup' } });
-      const actual = wrapper.find('[data-testId="Input-customFormGroup"]').length;
-      const expected = 1;
-      expect(actual).toEqual(expected);
-    });
-
-    it('should set a custom test id for label', () => {
-      wrapper.setProps({
-        testIds: { label: 'customLabel' },
-        label: 'Label',
-      });
-      const actual = wrapper.find('[data-testId="Input-customLabel"]').length;
+    it('should set a custom test id for wrapper', () => {
+      wrapper.setProps({ testIds: { wrapper: 'customWrapper' } });
+      const actual = wrapper.find('[data-testId="Input-customWrapper"]').length;
       const expected = 1;
       expect(actual).toEqual(expected);
     });
@@ -89,4 +80,6 @@ describe('<Input />', () => {
       expect(actual).toEqual(expected);
     });
   });
+
+  describe('Class Overrides', () => {});
 });

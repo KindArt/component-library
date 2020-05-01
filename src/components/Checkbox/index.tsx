@@ -12,12 +12,14 @@ export interface ICheckboxProps extends HTMLProps<HTMLInputElement> {
   classOverrides?: {
     wrapper?: string;
     checkbox?: string;
+    labelWrapper?: string;
     label?: string;
     description?: string;
   };
   testIds?: {
     wrapper?: string;
     checkbox?: string;
+    labelWrapper?: string;
     label?: string;
     description?: string;
   };
@@ -26,6 +28,7 @@ export interface ICheckboxProps extends HTMLProps<HTMLInputElement> {
 enum ElementIdentifiers {
   wrapper = 'wrapper',
   checkbox = 'checkbox',
+  labelWrapper = 'labelWrapper',
   label = 'label',
   description = 'description',
 }
@@ -49,6 +52,7 @@ const Checkbox: FC<ICheckboxProps> = ({
   const tid = {
     wrapper: (testIds && testIds.wrapper) || ElementIdentifiers.wrapper,
     checkbox: (testIds && testIds.checkbox) || ElementIdentifiers.checkbox,
+    labelWrapper: (testIds && testIds.labelWrapper) || ElementIdentifiers.labelWrapper,
     label: (testIds && testIds.label) || ElementIdentifiers.label,
     description: (testIds && testIds.description) || ElementIdentifiers.description,
   };
@@ -68,12 +72,16 @@ const Checkbox: FC<ICheckboxProps> = ({
         {...(props as any)}
       ></CheckboxStyle>
       <Label
-        className={classOverrides && classOverrides.label}
+        className={classOverrides && classOverrides.labelWrapper}
+        data-testId={`${tidPrefix}-${tid.labelWrapper}`}
         colour={colour}
-        data-testId={`${tidPrefix}-${tid.label}`}
       >
         {!toggle && !radio && <Check />}
-        {label && label}
+        {label && (
+          <span className={classOverrides && classOverrides.label} data-testId={`${tidPrefix}-${tid.label}`}>
+            {label}
+          </span>
+        )}
       </Label>
       {description && (
         <Description

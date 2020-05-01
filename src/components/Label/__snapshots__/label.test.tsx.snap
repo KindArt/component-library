@@ -2,6 +2,7 @@
 
 exports[`<Label /> should render 1`] = `
 <styled.span
+  data-testId="Label-wrapper"
   theme={
     Object {
       "label": Object {

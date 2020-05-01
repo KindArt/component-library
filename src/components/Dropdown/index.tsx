@@ -1,9 +1,10 @@
-import React, { FC, HTMLAttributes, ReactNode, useState } from 'react';
+import React, { FC, HTMLProps, ReactNode, useState } from 'react';
 import { Button, Label } from '../';
 import OptionList from './OptionList/OptionList';
 import OutsideClickHandler from '../../hocs/OutsideClickHandler';
 
 import {
+  Wrapper,
   ValueRendered,
   ValueRenderedWrapper,
   ArrowWrapper,
@@ -20,7 +21,8 @@ export type DropdownOptionType = {
   value: DropdownOptionValueType;
 };
 
-export interface IDropdownProps extends HTMLAttributes<HTMLSelectElement> {
+// Custom value is used so omit it
+export interface IDropdownProps extends Omit<HTMLProps<HTMLSelectElement>, 'value'> {
   options: Array<DropdownOptionType>;
   defaultOption?: Array<DropdownOptionValueType> | DropdownOptionValueType;
   value?: Array<DropdownOptionType>;
@@ -31,6 +33,9 @@ export interface IDropdownProps extends HTMLAttributes<HTMLSelectElement> {
   disabled?: boolean;
   errorMessage?: string;
   callbackOnChange?: Function;
+  classOverrides?: {
+    wrapper?: string;
+  };
 }
 
 const Dropdown: FC<IDropdownProps> = ({
@@ -45,6 +50,7 @@ const Dropdown: FC<IDropdownProps> = ({
   value,
   errorMessage,
   callbackOnChange,
+  classOverrides,
 }) => {
   const defaultValue = Array.isArray(defaultOption) ? defaultOption : [defaultOption];
 
@@ -127,29 +133,31 @@ const Dropdown: FC<IDropdownProps> = ({
 
   return (
     <OutsideClickHandler onOutsideClick={focused ? () => setFocused(false) : null} onOutsideScroll={false}>
-      {label && <Label content={label} />}
-      <Button
-        classOverrides={{
-          buttonWrapper: `${ValueRendered}`,
-        }}
-        disabled={disabled || options.length < 1}
-        onClick={onToggleFocus}
-      >
-        <ValueRenderedWrapper>
-          {renderValue()}
-          <ArrowWrapper />
-        </ValueRenderedWrapper>
-      </Button>
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {showOptionList && (
-        <OptionList
-          excluded={excluded}
-          optionClick={handleOptionClick}
-          optionProps={optionProps}
-          options={options}
-          selected={value || selected}
-        />
-      )}
+      <Wrapper className={classOverrides && classOverrides.wrapper}>
+        {label && <Label content={label} />}
+        <Button
+          classOverrides={{
+            buttonWrapper: `${ValueRendered}`,
+          }}
+          disabled={disabled || options.length < 1}
+          onClick={onToggleFocus}
+        >
+          <ValueRenderedWrapper>
+            {renderValue()}
+            <ArrowWrapper />
+          </ValueRenderedWrapper>
+        </Button>
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        {showOptionList && (
+          <OptionList
+            excluded={excluded}
+            optionClick={handleOptionClick}
+            optionProps={optionProps}
+            options={options}
+            selected={value || selected}
+          />
+        )}
+      </Wrapper>
     </OutsideClickHandler>
   );
 };

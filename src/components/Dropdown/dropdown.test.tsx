@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Dropdown, { IDropdownProps } from '.';
 import { Label, Button } from '../';
 import OptionList from './OptionList/OptionList';
-import { ErrorMessage } from './style';
+import { ErrorMessage, Wrapper } from './style';
 
 const defaultProps: IDropdownProps = {
   options: [{ label: 'A label', value: '1' }],
@@ -52,6 +52,14 @@ describe('<Dropdown />', () => {
       wrapper.setProps({ disabled: true });
       wrapper.find(Button).simulate('click');
       expect(wrapper.find(OptionList).length).toEqual(0);
+    });
+  });
+
+  describe('Class Overrides', () => {
+    it('should override the wrapper class', () => {
+      wrapper.setProps({ classOverrides: { wrapper: 'override' } });
+      const actual = wrapper.find(Wrapper).hasClass('override');
+      expect(actual).toBeTruthy();
     });
   });
 });

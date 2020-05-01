@@ -7,10 +7,11 @@ exports[`<Dropdown /> should render 1`] = `
   onOutsideScroll={false}
   onWindowResize={true}
 >
-  <Button
-    classOverrides={
-      Object {
-        "buttonWrapper": "
+  <styled.div>
+    <Button
+      classOverrides={
+        Object {
+          "buttonWrapper": "
   width: 100%;
   text-align: left; // important for other selectors - :hover etc.
   position: relative;
@@ -18,17 +19,18 @@ exports[`<Dropdown /> should render 1`] = `
   border: 1px solid ,#D8DCE6,;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
 ",
+        }
       }
-    }
-    disabled={false}
-    onClick={[Function]}
-  >
-    <styled.div>
-      <styled.div
-        placeholderEmpty={true}
-      />
-      <styled.div />
-    </styled.div>
-  </Button>
+      disabled={false}
+      onClick={[Function]}
+    >
+      <styled.div>
+        <styled.div
+          placeholderEmpty={true}
+        />
+        <styled.div />
+      </styled.div>
+    </Button>
+  </styled.div>
 </OutsideClickHandler>
 `;
