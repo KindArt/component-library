@@ -1,6 +1,6 @@
 {
   "name": "@kindart/component-library",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Reusable component library for Kind Art.",
   "main": "lib/index.js",
   "scripts": {
