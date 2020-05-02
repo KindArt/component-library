@@ -121,6 +121,7 @@ InputField.defaultProps = {
 export const ErrorMessage = styled.p`
   color: ${({ theme }) => theme.errorMessage.color};
   margin-top: 6px;
+  margin-bottom: 0;
   line-height: 1.375rem;
 
   ${({ className }) =>
