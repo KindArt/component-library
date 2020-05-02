@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import { LabelWrapper } from './style';
 
-interface ILabel {
+interface ILabel extends HTMLProps<HTMLLabelElement> {
   id?: string;
   content: string;
   testIds?: {
@@ -14,14 +14,18 @@ interface ILabel {
 
 const componentName = 'Label';
 
-const Label: FC<ILabel> = ({ id, content, testIds, classOverrides }) => {
+const Label: FC<ILabel> = ({ id, content, testIds, classOverrides, ...props }) => {
   const tidPrefix = id || componentName;
   const tid = {
     wrapper: (testIds && testIds.wrapper) || 'wrapper',
   };
 
   return (
-    <LabelWrapper className={classOverrides && classOverrides.wrapper} data-testid={`${tidPrefix}-${tid.wrapper}`}>
+    <LabelWrapper
+      className={classOverrides && classOverrides.wrapper}
+      data-testid={`${tidPrefix}-${tid.wrapper}`}
+      {...(props as any)}
+    >
       {content}
     </LabelWrapper>
   );

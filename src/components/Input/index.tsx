@@ -36,7 +36,19 @@ const componentName = 'Input';
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
-    { id, label, icon, iconPosition = 'left', errorMessage, value, testIds, classOverrides, type = 'text', ...props },
+    {
+      id,
+      label,
+      icon,
+      iconPosition = 'left',
+      errorMessage,
+      value,
+      testIds,
+      classOverrides,
+      type = 'text',
+      name,
+      ...props
+    },
     ref
   ) => {
     const tidPrefix = id || componentName;
@@ -48,7 +60,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
     };
     return (
       <Wrapper className={classOverrides && classOverrides.wrapper} data-testid={`${tidPrefix}-${tid.wrapper}`}>
-        {label && <Label classOverrides={{ wrapper: classOverrides && classOverrides.label }} content={label} />}
+        {label && (
+          <Label classOverrides={{ wrapper: classOverrides && classOverrides.label }} content={label} htmlFor={id} />
+        )}
         <InputWrapper>
           {icon && (
             <IconWrapper
@@ -60,9 +74,11 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
             </IconWrapper>
           )}
           <InputField
+            id={id}
             ref={ref}
             className={classOverrides && classOverrides.input}
             data-testid={`${tidPrefix}-${tid.input}`}
+            name={name}
             type={type}
             errorMessage={errorMessage}
             value={value}
