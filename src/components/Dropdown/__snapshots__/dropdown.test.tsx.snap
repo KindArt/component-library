@@ -22,6 +22,7 @@ exports[`<Dropdown /> should render 1`] = `
         }
       }
       disabled={false}
+      error={false}
       onClick={[Function]}
     >
       <styled.div>
