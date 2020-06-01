@@ -127,9 +127,8 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
   }
 
   /* Basic Appearence */
-  background: #FFFFFF;
   background-image: linear-gradient(0deg, #F6F7F9 0%, #FFFFFF 100%);
-  border: 1px solid $borderColorDarker;
+  border: 1px solid #CACEDB;
   box-shadow: 0 1px 1px 0 rgba(22, 29, 37, 0.05),
   inset 0 2px 0 0 rgba(255, 255, 255, 0.05);
   color: $textMain;
@@ -146,6 +145,17 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
     border: 1px solid #BDC2D1;
     box-shadow: 0 0 1px 0 rgba(22, 29, 37, 0.10), inset 0 2px 0 0 rgba(255, 255, 255, 0.05);
   }
+
+  ${({ error }) =>
+    error &&
+    css`
+      border: 1px solid ${Colours.WARNING};
+
+      &:hover,
+      &:focus {
+        border: 1px solid ${Colours.WARNING};
+      }
+    `}
 
   ${({ noBorder }) =>
     noBorder &&

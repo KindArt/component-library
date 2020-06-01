@@ -23,6 +23,7 @@ export interface IButtonProps extends HTMLProps<HTMLButtonElement> {
   /** Without background and without hover or effect */
   clear?: boolean;
   disabled?: boolean;
+  error?: boolean;
   buttonSize?: ButtonSize;
   icon?: React.ReactNode;
   iconRight?: boolean;

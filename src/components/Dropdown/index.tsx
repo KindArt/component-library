@@ -141,6 +141,7 @@ const Dropdown: FC<IDropdownProps> = ({
           }}
           disabled={disabled || options.length < 1}
           onClick={onToggleFocus}
+          error={!!errorMessage}
         >
           <ValueRenderedWrapper>
             {renderValue()}

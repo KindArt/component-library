@@ -6,6 +6,7 @@ export const RED = '#E6492D';
 export const YELLOW = '#FACF55';
 export const SUCCESS = `${GREEN}`;
 export const PRIMARY = `${BLUE}`;
+export const SECONDARY = `${ORANGE}`;
 export const WARNING = `${RED}`;
 export const ERROR = `${RED}`;
 
