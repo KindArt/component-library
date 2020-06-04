@@ -1,66 +1,55 @@
 import React, { FC, ReactNode, useState } from 'react';
 import { Button, BurgerMenu } from '../';
-import {
-  TopBarWrapper,
-  Section,
-  Divider,
-  BurgerMenuStyle,
-  TitleWrapper,
-  LinkContainer,
-  CustomLink,
-  Link
-} from './style';
+import { BurgerMenuStyle, TopBarStyle, Container, Brand, Links, Actions, Link } from './style';
 
 interface ILinks {
   title: string;
   url: string;
-  customNavigation?: (url: string) => void;
-  order: number;
+  navigate: (url: string) => void;
+  order?: number;
 }
 export interface ITopBar {
-  center?: boolean;
-  className?: string;
-  title?: ReactNode;
-  links: ILinks[];
+  brand?: ReactNode;
+  links?: ILinks[];
+  actions?: ReactNode;
+  leftAlign?: boolean;
+  toggleMenu: () => void;
+  isMenuOpen: boolean;
+  classOverrides?: {
+    wrapper?: string;
+    links?: string;
+  };
 }
 
 const renderLinks: Function = (links: ILinks[]) => {
-  const sortedLinks = links.sort((a, b) => a.order - b.order);
-
-  return sortedLinks.map(({ title, url, customNavigation }, index) => {
-    if (customNavigation) {
-      return (
-        <CustomLink key={index} onClick={() => customNavigation(url)}>
-          {title}
-        </CustomLink>
-      );
-    } else {
-      return (
-        <Link key={index} href={url}>
-          {title}
-        </Link>
-      );
+  const sortedLinks = links.sort((a, b) => {
+    if (!a.order || !b.order) {
+      return 0;
     }
+    return a.order - b.order;
+  });
+
+  return sortedLinks.map(({ title, url, navigate }, index) => {
+    return (
+      <Link key={index} onClick={() => navigate(url)}>
+        {title}
+      </Link>
+    );
   });
 };
 
-const TopBar: FC<ITopBar> = ({ center, className, title, links }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const TopBar: FC<ITopBar> = ({ brand, links, actions, leftAlign, toggleMenu, isMenuOpen }) => {
   return (
-    <TopBarWrapper center={center} className={className}>
-      <Button
-        transparent
-        classOverrides={{ buttonWrapper: `${BurgerMenuStyle}` }}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
+    <TopBarStyle>
+      <Button transparent clear classOverrides={{ buttonWrapper: `${BurgerMenuStyle}` }} onClick={() => toggleMenu()}>
         <BurgerMenu isOpen={isMenuOpen}></BurgerMenu>
       </Button>
-      <Section>
-        {title && <TitleWrapper>{title}</TitleWrapper>}
-        <Divider />
-        <LinkContainer>{renderLinks(links)}</LinkContainer>
-      </Section>
-    </TopBarWrapper>
+      <Container leftAlign={leftAlign}>
+        {brand && <Brand leftAlign={leftAlign}>{brand}</Brand>}
+        {links && <Links>{renderLinks(links)}</Links>}
+        {actions && <Actions leftAlign={leftAlign}>{actions}</Actions>}
+      </Container>
+    </TopBarStyle>
   );
 };
 

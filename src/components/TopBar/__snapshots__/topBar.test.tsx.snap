@@ -1,45 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TopBar /> should render 1`] = `
-<styled.div>
-  <Button
-    classOverrides={
-      Object {
-        "buttonWrapper": "
+<div>
+  <div
+    class="sc-fzoNJl kNlPIJ"
+  >
+    <button
+      class="sc-AxirZ kToFKW 
   display: none;
 
   @media (max-width: 768px) {
     display: block;
-    border-radius: 0;
     border: none !important;
-    border-right: 1px solid #eaedf3 !important;
-    width: 56px;
-    height: 56px;
-    left: 0;
-    top: 0;
-    font-weight: 600;
-    box-shadow: none;
   }
-",
-      }
-    }
-    onClick={[Function]}
-    transparent={true}
-  >
-    <BurgerMenu
-      isOpen={false}
-    />
-  </Button>
-  <styled.div>
-    <styled.div />
-    <styled.div>
-      <styled.a
-        href="#"
-        key="0"
+"
+      data-testid="Button-button"
+      type="button"
+    >
+      <span
+        class="sc-AxiKw cGEoKA"
+        data-testid="Button-content"
       >
-        Link 1
-      </styled.a>
-    </styled.div>
-  </styled.div>
-</styled.div>
+        <div
+          class="sc-fzoiQi hMcOtB"
+        >
+          <svg
+            class="sc-fzqARJ kryXcq"
+            fill="currentColor"
+            height="2px"
+            version="1.1"
+            viewBox="0 0 20 2"
+            width="20px"
+          >
+            <g
+              id="Icon/20px/menu-[Extra]"
+              transform="translate(0.000000, -9.000000)"
+            >
+              <polygon
+                id="Path"
+                points="0 11 20 11 20 9 0 9"
+              />
+            </g>
+          </svg>
+          <svg
+            class="sc-fzqNqU SonUO"
+            fill="currentColor"
+            height="2px"
+            version="1.1"
+            viewBox="0 0 20 2"
+            width="20px"
+          >
+            <g
+              id="Icon/20px/menu-[Extra]"
+              transform="translate(0.000000, -9.000000)"
+            >
+              <polygon
+                id="Path"
+                points="0 11 20 11 20 9 0 9"
+              />
+            </g>
+          </svg>
+          <svg
+            class="sc-fzoyTs dTDBFi"
+            fill="currentColor"
+            height="2px"
+            version="1.1"
+            viewBox="0 0 20 2"
+            width="20px"
+          >
+            <g
+              id="Icon/20px/menu-[Extra]"
+              transform="translate(0.000000, -9.000000)"
+            >
+              <polygon
+                id="Path"
+                points="0 11 20 11 20 9 0 9"
+              />
+            </g>
+          </svg>
+        </div>
+      </span>
+    </button>
+    <div
+      class="sc-fzoXWK fLKFOV"
+    />
+  </div>
+</div>
 `;

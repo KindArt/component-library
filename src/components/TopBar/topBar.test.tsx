@@ -1,70 +1,65 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, fireEvent, act } from '@testing-library/react';
 import TopBar, { ITopBar } from '.';
-import { TitleWrapper, Link, CustomLink } from './style';
-
-const defaultProps: ITopBar = {
-  links: [{ title: 'Link 1', url: '#', order: 1 }],
-};
 
 describe('<TopBar />', () => {
-  let wrapper: any;
-  beforeEach(() => {
-    wrapper = shallow(<TopBar {...defaultProps} />);
+  let toggleMenuMock = jest.fn();
+
+  const getTopBar = (props?: any) => {
+    const defaultProps: ITopBar = {
+      toggleMenu: toggleMenuMock,
+      isMenuOpen: false,
+      ...props,
+    };
+    const utils = render(<TopBar {...defaultProps} />);
+    return { ...utils };
+  };
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { container } = getTopBar();
+    expect(container).toMatchSnapshot();
   });
 
   describe('Visuals', () => {
-    it('should show a title if one is passed', () => {
-      wrapper.setProps({ title: 'Title' });
-      expect(wrapper.find(TitleWrapper).text()).toEqual('Title');
+    it('should render the branding if it is passed', () => {
+      const props = { brand: 'Branding' };
+      const { queryByText } = getTopBar(props);
+      const brandText = queryByText('Branding');
+      expect(brandText).toBeTruthy();
     });
 
-    it('should show the correct number of links', () => {
-      const links = [
-        { title: 'Link 1', url: '#', order: 1 },
-        { title: 'Link 2', url: '#', order: 2 },
-      ];
-      wrapper.setProps({ links });
-      expect(wrapper.find(Link).length).toEqual(2);
+    it('should render links if they are passed', () => {
+      const mockNavigate = jest.fn();
+      const props = { links: [{ title: 'Link 1', url: '/', navigate: mockNavigate }] };
+      const { queryByText } = getTopBar(props);
+      const link = queryByText('Link 1');
+      expect(link).toBeTruthy();
     });
 
-    it('should show the correct number of custom links', () => {
-      const links = [
-        { title: 'Link 1', url: '#', customNavigation: () => {}, order: 1 },
-        { title: 'Link 2', url: '#', customNavigation: () => {}, order: 2 },
-      ];
-      wrapper.setProps({ links });
-      expect(wrapper.find(CustomLink).length).toEqual(2);
-    });
-
-    it('should render the links in the correct order', () => {
-      const links = [
-        { title: 'Link 3', url: '#', order: 3 },
-        { title: 'Link 2', url: '#', order: 2 },
-        { title: 'Link 1', url: '#', order: 1 },
-      ];
-      wrapper.setProps({ links });
-      expect(wrapper.find(Link).at(0).text()).toEqual('Link 1');
-
-      expect(wrapper.find(Link).at(1).text()).toEqual('Link 2');
-
-      expect(wrapper.find(Link).at(2).text()).toEqual('Link 3');
+    it('should render the actions if they are passed', () => {
+      const props = { actions: 'Action' };
+      const { queryByText } = getTopBar(props);
+      const action = queryByText('Action');
+      expect(action).toBeTruthy();
     });
   });
 
-  describe('Interactions', () => {
-    it('should call customNavigation when clicked', () => {
-      const customNavigationMock = jest.fn();
-      const url = '#';
-      const links = [{ title: 'Link 1', url, customNavigation: customNavigationMock, order: 0 }];
-      wrapper.setProps({ links });
-      wrapper.find(CustomLink).simulate('click');
-      expect(customNavigationMock).toHaveBeenCalledTimes(1);
-      expect(customNavigationMock).toHaveBeenCalledWith(url);
+  describe('Actions', () => {
+    it('should call navigate on click', async () => {
+      const mockNavigate = jest.fn();
+      const props = { links: [{ title: 'Link 1', url: '/', navigate: mockNavigate }] };
+      const { getByText } = getTopBar(props);
+      const link = getByText('Link 1');
+
+      await act(async () => {
+        await fireEvent.click(link);
+      });
+
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 });

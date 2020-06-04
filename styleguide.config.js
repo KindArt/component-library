@@ -21,4 +21,11 @@ module.exports = {
       ],
     },
   },
+  styles: {
+    StyleGuide: {
+      content: {
+        maxWidth: 1300,
+      },
+    },
+  },
 };
