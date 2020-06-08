@@ -3,10 +3,10 @@
 exports[`<TopBar /> should render 1`] = `
 <div>
   <div
-    class="sc-fzoNJl kNlPIJ"
+    class="sc-fznMAR eRTPsu"
   >
     <button
-      class="sc-AxirZ kToFKW 
+      class="sc-AxirZ leDdxt 
   display: none;
 
   @media (max-width: 768px) {
@@ -82,7 +82,7 @@ exports[`<TopBar /> should render 1`] = `
       </span>
     </button>
     <div
-      class="sc-fzoXWK fLKFOV"
+      class="sc-fznWOq ktqVeZ"
     />
   </div>
 </div>

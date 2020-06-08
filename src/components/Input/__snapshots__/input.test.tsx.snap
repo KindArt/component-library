@@ -12,6 +12,7 @@ exports[`<Input /> should render 1`] = `
           "input": Object {
             "border": "1px solid #EAEDF3",
             "errorBorderColor": "#E6492D",
+            "focusColour": "#1665D8",
           },
         }
       }

@@ -6,4 +6,7 @@ module.exports = {
   },
   testPathIgnorePatterns: ['/node_modules/', '/lib/'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/styleMock.js',
+  },
 };

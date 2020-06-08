@@ -282,10 +282,8 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
     &.icon {
       opacity: 0.3;
     }
-    background: #747578;
-    border: 1px solid #696A6E;
+    background: rgba(62, 63, 66, 0.3);
     box-shadow: inset 0 2px 0 0 rgba(255, 255, 255, 0.06);
-    border-radius: 4px;
     color: $textSecondary;
   } //icon inisde the button
 

@@ -67,34 +67,17 @@ export const InputField = styled.input<IInputProps>`
   border: ${({ theme }) => theme.input.border};
   border-radius: 4px;
   flex: 1;
-  background: white;
   padding: 10px 15px;
-  transition: 0.2s all;
-  outline: none;
-  & + * {
-    margin-top: 10px;
-  }
-  &:disabled {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  &:focus {
-    border-color: $primary;
-  }
-  &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
-  &:-moz-placeholder {
-    color: $textSecondary;
-  }
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    transition: background-color 5500s ease-in-out 0s !important;
-    color: $textBase !important;
-    -webkit-text-fill-color: $textBase !important;
-  }
   font-size: 0.875rem;
+
+  &:disabled {
+    background: rgba(62, 63, 66, 0.3);
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.input.focusColour};
+  }
 
   ${({ errorMessage, theme }) =>
     errorMessage &&
@@ -114,6 +97,7 @@ InputField.defaultProps = {
     input: {
       border: `${CssVariables.BORDER_DEFAULT}`,
       errorBorderColor: `${Colours.ERROR}`,
+      focusColour: `${Colours.PRIMARY}`,
     },
   },
 };
