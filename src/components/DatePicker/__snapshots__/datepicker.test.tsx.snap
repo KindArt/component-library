@@ -163,7 +163,7 @@ exports[`<DatePicker /> should render 1`] = `
               </span>
             </span>
             <span
-              class="nice-dates-day -today"
+              class="nice-dates-day"
               style="height: 1px;"
             >
               <span
@@ -173,7 +173,7 @@ exports[`<DatePicker /> should render 1`] = `
               </span>
             </span>
             <span
-              class="nice-dates-day"
+              class="nice-dates-day -today"
               style="height: 1px;"
             >
               <span

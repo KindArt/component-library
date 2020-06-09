@@ -3,7 +3,7 @@
 exports[`<TopBar /> should render 1`] = `
 <div>
   <div
-    class="sc-fznMAR eRTPsu"
+    class="sc-fzqBkg cVzWgl"
   >
     <button
       class="sc-AxirZ leDdxt 
@@ -82,7 +82,7 @@ exports[`<TopBar /> should render 1`] = `
       </span>
     </button>
     <div
-      class="sc-fznWOq ktqVeZ"
+      class="sc-fzqPZZ eUrNzr"
     />
   </div>
 </div>

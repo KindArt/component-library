@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { MediaQueries, CssVariables, Typography, Colours } from '../../constants/styles';
+import { MediaQueries, Typography, Colours } from '../../constants/styles';
 
 interface ITopBarProps {
   leftAlign?: boolean;

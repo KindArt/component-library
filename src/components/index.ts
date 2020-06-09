@@ -9,3 +9,4 @@ export { default as TopBar } from './TopBar';
 export { default as BurgerMenu } from './BurgerMenu';
 export { default as Sidebar } from './Sidebar';
 export { default as DatePicker } from './DatePicker';
+export { default as TextArea } from './TextArea';
