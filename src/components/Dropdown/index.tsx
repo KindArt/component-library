@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps, ReactNode, useState } from 'react';
+import React, { FC, HTMLProps, ReactNode, useState, useEffect } from 'react';
 import { Button, Label } from '../';
 import OptionList from './OptionList/OptionList';
 import OutsideClickHandler from '../../hocs/OutsideClickHandler';
@@ -14,21 +14,17 @@ import {
   ErrorMessage,
 } from './style';
 
-export type DropdownOptionValueType = string | number;
+export type OptionValueType = string | number;
 
 export type DropdownOptionType = {
   label: ReactNode;
-  value: DropdownOptionValueType;
+  value: OptionValueType;
 };
 
-// Custom value is used so omit it
-export interface IDropdownProps extends Omit<HTMLProps<HTMLSelectElement>, 'value'> {
+export interface IDropdownProps extends HTMLProps<HTMLSelectElement> {
   options: Array<DropdownOptionType>;
-  defaultOption?: Array<DropdownOptionValueType> | DropdownOptionValueType;
-  value?: Array<DropdownOptionType>;
-  excluded?: Array<DropdownOptionValueType>;
+  excluded?: Array<OptionValueType>;
   multipleSelection?: boolean;
-  optionProps?: object;
   label?: string;
   disabled?: boolean;
   errorMessage?: string;
@@ -39,43 +35,37 @@ export interface IDropdownProps extends Omit<HTMLProps<HTMLSelectElement>, 'valu
 }
 
 const Dropdown: FC<IDropdownProps> = ({
-  defaultOption,
   options,
-  label,
-  disabled,
-  placeholder,
   excluded,
   multipleSelection,
-  optionProps,
-  value,
+  label,
+  disabled,
   errorMessage,
   callbackOnChange,
   classOverrides,
+  placeholder,
+  value,
 }) => {
-  const defaultValue = Array.isArray(defaultOption) ? defaultOption : [defaultOption];
-
-  const selectedOptions: Array<DropdownOptionType> = [];
-  options.forEach((item) => {
-    if (defaultValue.indexOf(item.value) !== -1) {
-      selectedOptions.push(item);
-    }
-  });
-
-  const [selected, setSelected] = useState(selectedOptions);
+  const [selected, setSelected] = useState<Array<OptionValueType>>([]);
   const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    if (value) {
+      const defaultOptions = Array.isArray(value) ? value : [value];
+      const selectedOptions: Array<OptionValueType> = [];
+      options.forEach((item) => {
+        if (defaultOptions.indexOf(item.value) !== -1) {
+          selectedOptions.push(item.value);
+        }
+      });
+      setSelected(selectedOptions);
+    }
+  }, [value]);
 
   const onToggleFocus = () => setFocused(!focused);
 
   const renderValue = () => {
-    const firstRender = selected[0];
-    if (typeof firstRender !== 'undefined') {
-      if (!firstRender.label) {
-        const full = options.find((item) => firstRender.value === item.value);
-        if (full) {
-          firstRender.label = full.label;
-        }
-      }
-    }
+    const firstSelectedOption = options.filter((option) => option.value === selected[0]);
 
     if (options.length < 1) {
       return <ValueWrapper>No options available</ValueWrapper>;
@@ -86,15 +76,17 @@ const Dropdown: FC<IDropdownProps> = ({
     }
 
     if (selected.length === 1) {
-      return <ValueWrapper>{firstRender.label}</ValueWrapper>;
+      return <ValueWrapper>{firstSelectedOption[0].label}</ValueWrapper>;
     }
 
-    return (
-      <PlaceholderAndOther>
-        <div>{firstRender.label}</div>
-        <PlusValue>+{selected.length - 1}</PlusValue>
-      </PlaceholderAndOther>
-    );
+    if (selected.length > 1) {
+      return (
+        <PlaceholderAndOther>
+          <div>{firstSelectedOption[0].label}</div>
+          <PlusValue>+{selected.length - 1}</PlusValue>
+        </PlaceholderAndOther>
+      );
+    }
   };
 
   const showOptionList = focused && !disabled;
@@ -110,18 +102,18 @@ const Dropdown: FC<IDropdownProps> = ({
   //   }
   // };
 
-  const setSelectedStateAndCallback = (selected: Array<DropdownOptionType>) => {
+  const setSelectedStateAndCallback = (selected: Array<OptionValueType>) => {
     setSelected(selected);
     callbackOnChange && callbackOnChange(selected);
   };
 
-  const handleOptionClick = (option: DropdownOptionType) => {
+  const handleOptionClick = (option: OptionValueType) => {
     if (!multipleSelection) {
       setSelectedStateAndCallback([option]);
       setFocused(false);
     } else {
       const selectedClone = [...selected];
-      const index = selectedClone.map((item) => item.value).indexOf(option.value);
+      const index = selectedClone.map((item) => item).indexOf(option);
       if (index !== -1) {
         selectedClone.splice(index, 1);
       } else {
@@ -150,13 +142,7 @@ const Dropdown: FC<IDropdownProps> = ({
         </Button>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         {showOptionList && (
-          <OptionList
-            excluded={excluded}
-            optionClick={handleOptionClick}
-            optionProps={optionProps}
-            options={options}
-            selected={value || selected}
-          />
+          <OptionList excluded={excluded} optionClick={handleOptionClick} options={options} selected={selected} />
         )}
       </Wrapper>
     </OutsideClickHandler>

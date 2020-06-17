@@ -18,9 +18,25 @@ export const TopBarStyle = styled.div<ITopBarProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: ${({ theme }) => theme.topBar.textColour};
+  background-color: ${({ theme }) => theme.topBar.backgroundColour};
   height: 70px;
-  color: ${Colours.TEXT_MAIN};
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
+
+TopBarStyle.defaultProps = {
+  theme: {
+    topBar: {
+      backgroundColour: '#252529',
+      textColour: '#FFF',
+    },
+  },
+};
 
 export const Container = styled.div<ITopBarProps>`
   display: flex;
@@ -63,6 +79,12 @@ export const Links = styled.div`
     display: flex;
     align-items: stretch;
   }
+
+  ${({ className }) =>
+    className &&
+    css`
+      ${className}
+    `}
 `;
 
 export const Actions = styled.div<ITopBarProps>`

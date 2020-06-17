@@ -1,23 +1,18 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Button, BurgerMenu } from '../';
 import { BurgerMenuStyle, TopBarStyle, Container, Brand, Links, Actions, Link } from './style';
+import { ILinks } from 'types';
 
-interface ILinks {
-  title: string;
-  url: string;
-  navigate: (url: string) => void;
-  order?: number;
-}
-export interface ITopBar {
+export interface ITopBarProps {
   brand?: ReactNode;
   links?: ILinks[];
   actions?: ReactNode;
   leftAlign?: boolean;
-  toggleMenu: () => void;
-  isMenuOpen: boolean;
+  toggleMenu?: Function;
+  isMenuOpen?: boolean;
   classOverrides?: {
     wrapper?: string;
-    links?: string;
+    linkContainer?: string;
   };
 }
 
@@ -29,24 +24,34 @@ const renderLinks: Function = (links: ILinks[]) => {
     return a.order - b.order;
   });
 
-  return sortedLinks.map(({ title, url, navigate }, index) => {
+  return sortedLinks.map(({ title, path, navigate }, index) => {
     return (
-      <Link key={index} onClick={() => navigate(url)}>
+      <Link key={index} onClick={() => navigate(path)}>
         {title}
       </Link>
     );
   });
 };
 
-const TopBar: FC<ITopBar> = ({ brand, links, actions, leftAlign, toggleMenu, isMenuOpen }) => {
+const TopBar: FC<ITopBarProps> = ({
+  brand,
+  links,
+  actions,
+  leftAlign,
+  toggleMenu,
+  isMenuOpen = false,
+  classOverrides,
+}) => {
   return (
-    <TopBarStyle>
-      <Button transparent clear classOverrides={{ buttonWrapper: `${BurgerMenuStyle}` }} onClick={() => toggleMenu()}>
-        <BurgerMenu isOpen={isMenuOpen}></BurgerMenu>
-      </Button>
+    <TopBarStyle className={classOverrides && classOverrides.wrapper}>
+      {toggleMenu && (
+        <Button transparent clear classOverrides={{ buttonWrapper: `${BurgerMenuStyle}` }} onClick={() => toggleMenu()}>
+          <BurgerMenu isOpen={isMenuOpen}></BurgerMenu>
+        </Button>
+      )}
       <Container leftAlign={leftAlign}>
         {brand && <Brand leftAlign={leftAlign}>{brand}</Brand>}
-        {links && <Links>{renderLinks(links)}</Links>}
+        {links && <Links className={classOverrides && classOverrides.linkContainer}>{renderLinks(links)}</Links>}
         {actions && <Actions leftAlign={leftAlign}>{actions}</Actions>}
       </Container>
     </TopBarStyle>

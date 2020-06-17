@@ -5,7 +5,7 @@ export { default as Dropdown } from './Dropdown';
 export { default as Checkbox } from './Checkbox';
 export { default as RadioButton } from './RadioButton';
 export { default as Toggle } from './Toggle';
-export { default as TopBar } from './TopBar';
+export { default as TopBar, ITopBarProps } from './TopBar';
 export { default as BurgerMenu } from './BurgerMenu';
 export { default as Sidebar } from './Sidebar';
 export { default as DatePicker } from './DatePicker';

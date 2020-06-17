@@ -2,29 +2,30 @@ import styled, { css } from 'styled-components';
 import { Colours, Typography } from '../../../constants/styles';
 
 export const Wrapper = styled.div`
+  display: flex;
+  z-index: 2;
+  position: absolute;
+  margin: 5px 0 0;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
   border: 1px solid ${Colours.BORDER_COLOUR_DARKER};
-  background: white;
   border-radius: 4px;
-  transform: translateY(6px);
+  background: white;
   max-height: 300px;
 `;
 
 export const List = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 235px;
   position: relative;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
 `;
 
 // needs the :focus
 export const ButtonWrapperOverride = css`
   outline: none;
-  cursor: pointer;
-  background: transparent;
   border: none;
+  background: transparent;
   border-radius: 0;
 `;
 
@@ -57,3 +58,5 @@ export const Check = styled.div`
   background: ${Colours.GREEN};
   border-radius: 50%;
 `;
+
+export const Option = styled.div``;

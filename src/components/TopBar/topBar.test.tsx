@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
-import TopBar, { ITopBar } from '.';
+import TopBar, { ITopBarProps } from '.';
 
 describe('<TopBar />', () => {
   let toggleMenuMock = jest.fn();
 
   const getTopBar = (props?: any) => {
-    const defaultProps: ITopBar = {
+    const defaultProps: ITopBarProps = {
       toggleMenu: toggleMenuMock,
       isMenuOpen: false,
       ...props,

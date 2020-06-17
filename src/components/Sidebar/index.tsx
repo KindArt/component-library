@@ -1,22 +1,21 @@
-import React, { FC } from 'react';
-import { SidebarWrapper, Title, LinksContainer, Link } from './style';
-
-interface ILinks {
-  title: string;
-  url: string;
-  navigate: (url: string) => void;
-  order?: number;
-  isActive: boolean;
-}
+import React, { FC, ReactNode } from 'react';
+import { SidebarWrapper, CloseButton, TopContent, Content, Title, LinksContainer, Link } from './style';
+import { ILinks } from 'types';
 
 export interface ISidebarProps {
+  isVisible?: boolean;
+  closeMenu?: () => void;
   linksTitle?: string;
   links: ILinks[];
-  height?: string;
-  width?: string;
+  topContent?: ReactNode;
+  classOverrides?: {
+    wrapper?: string;
+    title?: string;
+    linksContainer?: string;
+  };
 }
 
-const renderLinks = (links: ILinks[]) => {
+const renderLinks = (links: ILinks[], closeMenu?: () => void) => {
   const sortedLinks = links.sort((a, b) => {
     if (!a.order || !b.order) {
       return 0;
@@ -24,20 +23,31 @@ const renderLinks = (links: ILinks[]) => {
     return a.order - b.order;
   });
 
-  return sortedLinks.map(({ title, url, navigate, isActive }, index) => {
+  return sortedLinks.map(({ title, path, navigate, isActive }, index) => {
+    const handleNavigation = () => {
+      navigate(path);
+      closeMenu && closeMenu();
+    };
+
     return (
-      <Link key={index} onClick={() => navigate(url)} isActive={isActive} data-testid="navigationLink">
+      <Link key={index} onClick={handleNavigation} isActive={isActive} data-testid="navigationLink">
         {title}
       </Link>
     );
   });
 };
 
-const Sidebar: FC<ISidebarProps> = ({ linksTitle, links, height, width }) => {
+const Sidebar: FC<ISidebarProps> = ({ isVisible = true, closeMenu, linksTitle, links, topContent, classOverrides }) => {
   return (
-    <SidebarWrapper height={height} width={width}>
-      <Title>{linksTitle}</Title>
-      <LinksContainer>{renderLinks(links)}</LinksContainer>
+    <SidebarWrapper className={classOverrides && classOverrides.wrapper} isVisible={isVisible}>
+      {closeMenu && <CloseButton onClick={closeMenu}>&times;</CloseButton>}
+      {topContent && <TopContent>{topContent}</TopContent>}
+      <Content>
+        <Title className={classOverrides && classOverrides.title}>{linksTitle}</Title>
+        <LinksContainer className={classOverrides && classOverrides.linksContainer}>
+          {renderLinks(links, closeMenu)}
+        </LinksContainer>
+      </Content>
     </SidebarWrapper>
   );
 };
