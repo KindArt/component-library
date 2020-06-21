@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MobileSidebar /> should render 1`] = `
+<div>
+  <div
+    class="sc-AxjAm iEunSR"
+  >
+    <div
+      class="sc-AxhCb cJjNPN"
+    >
+      <h1
+        class="sc-AxhUy jDelcq"
+      />
+      <div
+        class="sc-AxgMl jhrfRy"
+      >
+        <div
+          class="sc-AxheI jOPaSS"
+          data-testid="navigationLink"
+        >
+          Link 1
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

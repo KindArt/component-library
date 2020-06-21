@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Colours } from '../../constants/styles';
+import { Colours, CssVariables } from '../../constants/styles';
 
 // Dropdown Styles
 
@@ -16,7 +16,7 @@ export const ValueRendered = css`
   text-align: left; // important for other selectors - :hover etc.
   position: relative;
   background: #ffffff;
-  border: 1px solid ${Colours.BORDER_COLOUR_DARKER};
+  border: ${CssVariables.BORDER_DEFAULT};
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
 `;
 
@@ -88,8 +88,8 @@ export const PlaceholderAndOther = styled.div`
 
 export const PlusValue = styled.div`
   display: inline-block;
-  background: $borderColorDarker;
-  border: $borderDefault;
+  background: ${Colours.BORDER_COLOUR_DARKER};
+  border: ${CssVariables.BORDER_DEFAULT};
   height: 20px;
   border-radius: 100px;
   display: flex;

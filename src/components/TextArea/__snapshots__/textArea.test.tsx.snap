@@ -3,10 +3,10 @@
 exports[`<TextArea /> should render 1`] = `
 <div>
   <div
-    class="sc-fzoKki kwfRYe"
+    class="sc-fznMnq fhEgew"
   >
     <textarea
-      class="sc-fzoYkl hpuNKy"
+      class="sc-fzoant cGUdRX"
     />
   </div>
 </div>

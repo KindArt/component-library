@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Button, BurgerMenu } from '../';
+import { Button, BurgerMenu, MobileSidebar } from '../';
 import { BurgerMenuStyle, TopBarStyle, Container, Brand, Links, Actions, Link } from './style';
 import { ILinks } from 'types';
 
@@ -50,10 +50,23 @@ const TopBar: FC<ITopBarProps> = ({
         </Button>
       )}
       <Container leftAlign={leftAlign}>
-        {brand && <Brand leftAlign={leftAlign}>{brand}</Brand>}
-        {links && <Links className={classOverrides && classOverrides.linkContainer}>{renderLinks(links)}</Links>}
-        {actions && <Actions leftAlign={leftAlign}>{actions}</Actions>}
+        {brand && (
+          <Brand data-testid="TopBar-brand" leftAlign={leftAlign}>
+            {brand}
+          </Brand>
+        )}
+        {links && (
+          <Links data-testid="TopBar-links" className={classOverrides && classOverrides.linkContainer}>
+            {renderLinks(links)}
+          </Links>
+        )}
+        {actions && (
+          <Actions data-testid="TopBar-actions" leftAlign={leftAlign}>
+            {actions}
+          </Actions>
+        )}
       </Container>
+      {links && <MobileSidebar isVisible={isMenuOpen} closeMenu={toggleMenu} links={links} />}
     </TopBarStyle>
   );
 };

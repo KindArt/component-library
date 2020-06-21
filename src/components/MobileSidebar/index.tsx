@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
-import { SidebarWrapper, CloseButton, TopContent, Content, Title, LinksContainer, Link } from './style';
+import { MobileSidebarWrapper, CloseButton, TopContent, Content, Title, LinksContainer, Link } from './style';
 import { ILinks } from 'types';
 
-export interface ISidebarProps {
-  isVisible?: boolean;
-  closeMenu?: () => void;
+export interface IMobileSidebarProps {
+  isVisible: boolean;
+  closeMenu?: Function;
   linksTitle?: string;
   links: ILinks[];
   topContent?: ReactNode;
@@ -15,7 +15,7 @@ export interface ISidebarProps {
   };
 }
 
-const renderLinks = (links: ILinks[], closeMenu?: () => void) => {
+const renderLinks = (links: ILinks[], closeMenu?: Function) => {
   const sortedLinks = links.sort((a, b) => {
     if (!a.order || !b.order) {
       return 0;
@@ -37,10 +37,17 @@ const renderLinks = (links: ILinks[], closeMenu?: () => void) => {
   });
 };
 
-const Sidebar: FC<ISidebarProps> = ({ isVisible = true, closeMenu, linksTitle, links, topContent, classOverrides }) => {
+const MobileSidebar: FC<IMobileSidebarProps> = ({
+  isVisible,
+  closeMenu,
+  linksTitle,
+  links,
+  topContent,
+  classOverrides,
+}) => {
   return (
-    <SidebarWrapper className={classOverrides && classOverrides.wrapper} isVisible={isVisible}>
-      {closeMenu && <CloseButton onClick={closeMenu}>&times;</CloseButton>}
+    <MobileSidebarWrapper className={classOverrides && classOverrides.wrapper} isVisible={isVisible}>
+      {closeMenu && <CloseButton onClick={() => closeMenu()}>&times;</CloseButton>}
       {topContent && <TopContent>{topContent}</TopContent>}
       <Content>
         <Title className={classOverrides && classOverrides.title}>{linksTitle}</Title>
@@ -48,8 +55,8 @@ const Sidebar: FC<ISidebarProps> = ({ isVisible = true, closeMenu, linksTitle, l
           {renderLinks(links, closeMenu)}
         </LinksContainer>
       </Content>
-    </SidebarWrapper>
+    </MobileSidebarWrapper>
   );
 };
 
-export default Sidebar;
+export default MobileSidebar;

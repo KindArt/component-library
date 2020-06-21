@@ -30,10 +30,8 @@
     "not dead"
   ],
   "peerDependencies": {
-    "date-fns": ">=2.0.0",
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0",
-    "react-nice-dates": ">=3.0.0",
     "styled-components": ">=5.0.0"
   },
   "devDependencies": {
@@ -49,7 +47,6 @@
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
-    "date-fns": "^2.14.0",
     "dayjs": "^1.8.28",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -58,7 +55,6 @@
     "react": "^16.13.1",
     "react-docgen-typescript": "^1.16.3",
     "react-dom": "^16.13.1",
-    "react-nice-dates": "^3.0.4",
     "react-styleguidist": "^11.0.5",
     "style-loader": "^1.2.1",
     "styled-components": "^5.1.0",

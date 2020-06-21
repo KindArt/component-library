@@ -1,23 +1,23 @@
 import styled, { css } from 'styled-components';
 import { Colours } from '../../constants/styles';
 
-interface ISidebarWrapperProps {
+interface IMobileSidebarWrapperProps {
   height?: string;
   width?: string;
   isVisible: boolean;
 }
 
-export const SidebarWrapper = styled.div<ISidebarWrapperProps>`
+export const MobileSidebarWrapper = styled.div<IMobileSidebarWrapperProps>`
   z-index: 99;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 70px;
   left: 0;
   overflow-x: hidden;
   border-right: 1px solid ${Colours.BORDER_COLOUR};
-  background-color: ${({ theme }) => theme.sidebar.backgroundColour};
-  height: 100vh;
+  background-color: ${({ theme }) => theme.mobileSidebar.backgroundColour};
+  height: 100%;
   width: 70vw;
 
   ${({ isVisible }) =>
@@ -33,25 +33,26 @@ export const SidebarWrapper = styled.div<ISidebarWrapperProps>`
     `}
 `;
 
-SidebarWrapper.defaultProps = {
+MobileSidebarWrapper.defaultProps = {
   theme: {
-    sidebar: {
+    mobileSidebar: {
       backgroundColour: '#252529',
     },
   },
 };
 
 export const CloseButton = styled.div`
-  color: ${({ theme }) => theme.sidebar.cross.colour};
+  color: ${({ theme }) => theme.mobileSidebar.cross.colour};
   position: absolute;
   top: 0;
   right: 25px;
   font-size: 36px;
+  cursor: pointer;
 `;
 
 CloseButton.defaultProps = {
   theme: {
-    sidebar: {
+    mobileSidebar: {
       cross: {
         colour: '#FFF',
       },
@@ -94,7 +95,7 @@ interface ILinkProps {
 }
 
 export const Link = styled.div<ILinkProps>`
-  color: ${({ theme }) => theme.sidebar.links.textColour};
+  color: ${({ theme }) => theme.mobileSidebar.links.textColour};
   display: flex;
   align-items: center;
   height: 45px;
@@ -103,7 +104,7 @@ export const Link = styled.div<ILinkProps>`
   ${({ isActive, theme }) =>
     isActive &&
     `
-      border-left: 4px solid ${theme.sidebar.links.borderColour};
+      border-left: 4px solid ${theme.mobileSidebar.links.borderColour};
       border-top: 1px solid rgba(22, 101, 216, 0.2);
       border-bottom: 1px solid rgba(22, 101, 216, 0.2);
       background-color: rgba(22, 101, 216, 0.08);
@@ -117,7 +118,7 @@ export const Link = styled.div<ILinkProps>`
 
 Link.defaultProps = {
   theme: {
-    sidebar: {
+    mobileSidebar: {
       links: {
         textColour: '#FFF',
         borderColour: Colours.PRIMARY,

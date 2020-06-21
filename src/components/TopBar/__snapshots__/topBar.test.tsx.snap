@@ -3,7 +3,7 @@
 exports[`<TopBar /> should render 1`] = `
 <div>
   <div
-    class="sc-fzqBkg cVzWgl"
+    class="sc-fzoYkl fCdOVl"
   >
     <button
       class="sc-AxirZ leDdxt 
@@ -22,10 +22,10 @@ exports[`<TopBar /> should render 1`] = `
         data-testid="Button-content"
       >
         <div
-          class="sc-fzoiQi hMcOtB"
+          class="sc-fzqARJ hkvVQj"
         >
           <svg
-            class="sc-fzqARJ kryXcq"
+            class="sc-fzqNqU fcljRp"
             fill="currentColor"
             height="2px"
             version="1.1"
@@ -43,7 +43,7 @@ exports[`<TopBar /> should render 1`] = `
             </g>
           </svg>
           <svg
-            class="sc-fzqNqU SonUO"
+            class="sc-fzoyTs kCGEHg"
             fill="currentColor"
             height="2px"
             version="1.1"
@@ -61,7 +61,7 @@ exports[`<TopBar /> should render 1`] = `
             </g>
           </svg>
           <svg
-            class="sc-fzoyTs dTDBFi"
+            class="sc-fzoNJl bnuJxw"
             fill="currentColor"
             height="2px"
             version="1.1"
@@ -82,7 +82,7 @@ exports[`<TopBar /> should render 1`] = `
       </span>
     </button>
     <div
-      class="sc-fzqPZZ eUrNzr"
+      class="sc-fzpkJw fwQomI"
     />
   </div>
 </div>

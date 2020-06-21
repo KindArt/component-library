@@ -22,7 +22,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
       <TextAreaWrapper>
         {label && <Label content={label} />}
         <TextAreaField ref={ref} errorMessage={errorMessage} {...(props as any)} />
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        {errorMessage && <ErrorMessage data-testid="TextArea-errorMessage">{errorMessage}</ErrorMessage>}
       </TextAreaWrapper>
     );
   }
