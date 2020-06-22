@@ -45,6 +45,7 @@ const Dropdown: FC<IDropdownProps> = ({
   classOverrides,
   placeholder,
   value,
+  id,
 }) => {
   const [selected, setSelected] = useState<Array<OptionValueType>>([]);
   const [focused, setFocused] = useState(false);
@@ -126,8 +127,9 @@ const Dropdown: FC<IDropdownProps> = ({
   return (
     <OutsideClickHandler onOutsideClick={focused ? () => setFocused(false) : null} onOutsideScroll={false}>
       <Wrapper className={classOverrides && classOverrides.wrapper}>
-        {label && <Label content={label} />}
+        {label && <Label content={label} htmlFor={id} />}
         <Button
+          id={id}
           classOverrides={{
             buttonWrapper: `${ValueRendered}`,
           }}
